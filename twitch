@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "Enter the twitch name of the streamer:"
+
+read address
+
+echo "Enter stream quality: [audio_only, 160p(worst), 480p, (best)]"
+
+read quality
+
+if [[ -z "$address" && -z "$quality" ]]
+then
+		echo "Streamer (or) quality not specified!" && exit 1
+else
+		chromium-browser --app="https://www.twitch.tv/popout/$address/chat?popout=" &
+		streamlink --player "vlc --qt-minimal-view" twitch.tv/$address $quality && exit 0
+fi
