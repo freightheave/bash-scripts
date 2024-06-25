@@ -1,12 +1,7 @@
 #!/bin/bash
 
-len="$(whoami)@$(uname -n)"
-size=${#len}
-
-repeat(){
-        for i in {1..$1}; do echo "$2"; done
-}
-
+host="$(whoami)@$(uname -n)"
+size=${#host}
 
 repeat(){
     for ((i=1; i<=$1; i++)); do
@@ -15,7 +10,7 @@ repeat(){
     echo
 }
 
-echo "$len"
+echo "$host"
 repeat $size "-"
 
 echo "Kernel Version:" $(uname -r)
